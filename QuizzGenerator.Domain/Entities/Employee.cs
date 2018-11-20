@@ -17,8 +17,6 @@ namespace QuizzGenerator.Domain.Entities
         private string _FirstName;
         private DateTime _BirthDate;
         private string _Email;
-        private string _Login;
-        private string _Password;
         #endregion
 
         #region Accessors
@@ -29,8 +27,6 @@ namespace QuizzGenerator.Domain.Entities
         public string FirstName { get => _FirstName; set => _FirstName = value; }
         public DateTime BirthDate { get => _BirthDate; set => _BirthDate = value; }
         public string Email { get => _Email; set => _Email = value; }
-        public string Login { get => _Login; set => _Login = value; }
-        public string Password { get => _Password; set => _Password = value; }
         #endregion
     }
 }

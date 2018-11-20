@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace QuizzGenerator.Domain.Entities
 {
+    [Table("Language")]
     public class Language
     
     {

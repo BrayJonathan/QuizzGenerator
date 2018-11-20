@@ -50,13 +50,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\QuizzGenerator.Domain\QuizzGenerator.Domain.csproj">
+    <ProjectReference Include="..\QuizzGenerator.Domain\QuizGenerator.Domain.csproj">
       <Project>{b5666a0a-f647-43a8-94f9-01a1bc013979}</Project>
-      <Name>QuizzGenerator.Domain</Name>
+      <Name>QuizGenerator.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\QuizzGenerator.Services\QuizzGenerator.Services.csproj">
+    <ProjectReference Include="..\QuizzGenerator.Services\QuizGenerator.Services.csproj">
       <Project>{35c046a7-4db8-43c9-a4ac-57bf3fae08e2}</Project>
-      <Name>QuizzGenerator.Services</Name>
+      <Name>QuizGenerator.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

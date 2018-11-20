@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28306.52
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizzGenerator.Domain", "QuizzGenerator.Domain\QuizzGenerator.Domain.csproj", "{B5666A0A-F647-43A8-94F9-01A1BC013979}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizGenerator.Domain", "QuizzGenerator.Domain\QuizGenerator.Domain.csproj", "{B5666A0A-F647-43A8-94F9-01A1BC013979}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizzGenerator.Services", "QuizzGenerator.Services\QuizzGenerator.Services.csproj", "{35C046A7-4DB8-43C9-A4AC-57BF3FAE08E2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizGenerator.Services", "QuizzGenerator.Services\QuizGenerator.Services.csproj", "{35C046A7-4DB8-43C9-A4AC-57BF3FAE08E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizzGenerator.Console", "QuizzGenerator.Console\QuizzGenerator.Console.csproj", "{2B26F7BC-D36B-4BE4-BD2A-8688380CBF1F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizGenerator.Console", "QuizzGenerator.Console\QuizGenerator.Console.csproj", "{2B26F7BC-D36B-4BE4-BD2A-8688380CBF1F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -54,6 +54,7 @@
     <Compile Include="Entities\Employee.cs" />
     <Compile Include="Entities\Language.cs" />
     <Compile Include="Entities\Ratio.cs" />
+    <Compile Include="Entities\Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

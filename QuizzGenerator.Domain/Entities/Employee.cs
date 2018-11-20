@@ -22,10 +22,17 @@ namespace QuizzGenerator.Domain.Entities
 
         //Relations
         public virtual Profile Profile { get; set; }
-        public virtual ICollection<Ratio> Ratios { get; set; }
+        public virtual ICollection<Ratio> RatiosCreated { get; set; }
+        public virtual ICollection<Level> LevelsCreated { get; set; }
+        public virtual ICollection<Language> LanguagesCreated { get; set; }
+        public virtual ICollection<Candidate> CandidatesCreated { get; set; } 
+        public virtual ICollection<Question> QuestionsCreated { get; set; }
+        public virtual ICollection<QuestionOption> QuestionOptionsCreated { get; set; }
+
 
         //Variables
         #endregion
+
 
         #region Accessors
         [Key]

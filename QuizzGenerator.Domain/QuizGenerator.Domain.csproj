@@ -48,7 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Entities\Result.cs" />
     <Compile Include="Entities\Question.cs" />
     <Compile Include="Entities\QuestionOption.cs" />
@@ -61,6 +60,7 @@
     <Compile Include="Enum\AnswerStateEnum.cs" />
     <Compile Include="Enum\QuestionTypeEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuizContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Identity\" />

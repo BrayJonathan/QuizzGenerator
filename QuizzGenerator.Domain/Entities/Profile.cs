@@ -18,6 +18,7 @@ namespace QuizzGenerator.Domain.Entities
         private bool _HasRightToCreate;
 
         //Relations
+        public virtual ICollection<Employee> Employees { get; set; }
 
         //Variables
         #endregion

@@ -18,8 +18,10 @@ namespace QuizzGenerator.Domain.Entities
         private string _FirstName;
         private DateTime _BirthDate;
         private string _Email;
+        private int _ProfileId;
 
         //Relations
+        public virtual Profile Profile { get; set; }
 
         //Variables
         #endregion
@@ -32,6 +34,8 @@ namespace QuizzGenerator.Domain.Entities
         public string FirstName { get => _FirstName; set => _FirstName = value; }
         public DateTime BirthDate { get => _BirthDate; set => _BirthDate = value; }
         public string Email { get => _Email; set => _Email = value; }
+        [ForeignKey("Profile")]
+        public int ProfileId { get => _ProfileId; set => _ProfileId = value; }
         #endregion
     }
 }

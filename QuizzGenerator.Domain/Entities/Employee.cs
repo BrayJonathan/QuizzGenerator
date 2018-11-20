@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace QuizzGenerator.Domain.Entities
 {
     [Table("Employee")]
-    class Employee
+    public class Employee
     {
         #region Properties
         //Fields
@@ -22,6 +22,7 @@ namespace QuizzGenerator.Domain.Entities
 
         //Relations
         public virtual Profile Profile { get; set; }
+        public virtual ICollection<Ratio> Ratios { get; set; }
 
         //Variables
         #endregion

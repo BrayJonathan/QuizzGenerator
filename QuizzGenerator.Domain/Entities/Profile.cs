@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace QuizzGenerator.Domain.Entities
 {
     [Table("Profile")]
-    class Profile
+    public class Profile
     {
         #region Properties
         //Fields

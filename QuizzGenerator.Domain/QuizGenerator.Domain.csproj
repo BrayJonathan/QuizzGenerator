@@ -49,7 +49,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Entities\Candidate.cs" />
     <Compile Include="Entities\Employee.cs" />
+    <Compile Include="Entities\Language.cs" />
     <Compile Include="Entities\Profile.cs" />
     <Compile Include="Entities\Level.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

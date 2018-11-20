@@ -49,13 +49,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="Entities\Answer.cs" />
-    <Compile Include="Entities\Candidate.cs" />
-    <Compile Include="Entities\Employee.cs" />
-    <Compile Include="Entities\Language.cs" />
-    <Compile Include="Entities\Ratio.cs" />
-    <Compile Include="Entities\Profile.cs" />
+<<<<<<< HEAD
     <Compile Include="Entities\Level.cs" />
+=======
+    <Compile Include="Entities\Employee.cs" />
+    <Compile Include="Entities\Profile.cs" />
+>>>>>>> master
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

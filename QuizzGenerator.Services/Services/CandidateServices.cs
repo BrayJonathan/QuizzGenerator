@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using QuizzGenerator.Domain.Entities;
-using QuizzGenerator.Services.
 
 namespace QuizzGenerator.Services.Services
 {

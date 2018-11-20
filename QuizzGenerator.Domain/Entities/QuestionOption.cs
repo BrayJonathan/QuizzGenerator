@@ -11,10 +11,15 @@ namespace QuizzGenerator.Domain.Entities
     [Table("QuestionOption")]
     public class QuestionOption
     {
-        #region properties
+        #region 
+        //Fields
         private int _AnswerId;
         private string _Label;
         private bool _IsGood;
+
+        //Relations
+
+        //Variables
         #endregion
 
         #region accessors

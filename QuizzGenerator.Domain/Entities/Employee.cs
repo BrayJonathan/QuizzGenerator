@@ -9,14 +9,22 @@ using System.Threading.Tasks;
 namespace QuizzGenerator.Domain.Entities
 {
     [Table("Employee")]
-    class Employee
+    public class Employee
     {
         #region Properties
+        //Fields
         private int _EmployeeId;
         private string _LastName;
         private string _FirstName;
         private DateTime _BirthDate;
         private string _Email;
+        private int _ProfileId;
+
+        //Relations
+        public virtual Profile Profile { get; set; }
+        public virtual ICollection<Ratio> Ratios { get; set; }
+
+        //Variables
         #endregion
 
         #region Accessors
@@ -27,6 +35,8 @@ namespace QuizzGenerator.Domain.Entities
         public string FirstName { get => _FirstName; set => _FirstName = value; }
         public DateTime BirthDate { get => _BirthDate; set => _BirthDate = value; }
         public string Email { get => _Email; set => _Email = value; }
+        [ForeignKey("Profile")]
+        public int ProfileId { get => _ProfileId; set => _ProfileId = value; }
         #endregion
     }
 }

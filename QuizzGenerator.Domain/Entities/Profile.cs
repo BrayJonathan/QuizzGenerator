@@ -9,12 +9,18 @@ using System.Threading.Tasks;
 namespace QuizzGenerator.Domain.Entities
 {
     [Table("Profile")]
-    class Profile
+    public class Profile
     {
         #region Properties
+        //Fields
         private int _ProfileId;
         private string _Label;
         private bool _HasRightToCreate;
+
+        //Relations
+        public virtual ICollection<Employee> Employees { get; set; }
+
+        //Variables
         #endregion
 
         #region Accessors

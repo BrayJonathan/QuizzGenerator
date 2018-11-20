@@ -12,11 +12,16 @@ namespace QuizzGenerator.Domain.Entities
     public class Candidate
     {
         #region properties
+        //Fields
         private int _CandidateID;
         private string _LastName;
         private string _FirstName;
         private string _PhoneNumber;
         private string _Email;
+
+        //Relations
+
+        //Variables
         #endregion
 
         #region accessors
@@ -28,10 +33,5 @@ namespace QuizzGenerator.Domain.Entities
         public string PhoneNumber { get => _PhoneNumber; set => _PhoneNumber = value; }
         public string Email { get => _Email; set => _Email = value; }
         #endregion
-
-
-
-
-
     }
 }

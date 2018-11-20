@@ -12,11 +12,16 @@ namespace QuizzGenerator.Domain.Entities
     class Employee
     {
         #region Properties
+        //Fields
         private int _EmployeeId;
         private string _LastName;
         private string _FirstName;
         private DateTime _BirthDate;
         private string _Email;
+
+        //Relations
+
+        //Variables
         #endregion
 
         #region Accessors

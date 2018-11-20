@@ -12,14 +12,15 @@ namespace QuizzGenerator.Domain.Entities
     public class Ratio
     {
         #region properties
+        //Fields
         private int _RatioId;
         private int _Junior;
         private int __Confirmed;
         private int _Expert;
 
-   
+        //Relations
 
-
+        //Variables
         #endregion
 
         #region accessors

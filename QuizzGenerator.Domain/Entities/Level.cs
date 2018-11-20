@@ -9,13 +9,16 @@ using System.Threading.Tasks;
 namespace QuizzGenerator.Domain.Entities
 {
     [Table("Level")]
-
     public class Level
     {
         #region Properties
+        //Fields
         private int _LevelID;
         private string _Name;
 
+        //Relations
+
+        //Variables
         #endregion
 
         #region Accessors

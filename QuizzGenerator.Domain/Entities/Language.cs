@@ -13,8 +13,13 @@ namespace QuizzGenerator.Domain.Entities
 
     {
         #region properties
+        //Fields
         private int _LanguageID;
         private string _Label;
+
+        //Relations
+
+        //Variables
         #endregion
 
         #region accessors

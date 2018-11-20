@@ -5,17 +5,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using QuizzGenerator.Domain.Enum;
 
 namespace QuizzGenerator.Domain.Entities
 {
-    [Table("Profile")]
-    class Profile
+    [Table("Question")]
+    class Question
     {
         #region Properties
         //Fields
-        private int _ProfileId;
-        private string _Label;
-        private bool _HasRightToCreate;
+        private int _QuestionId;
+        private String _QuestionLabel;
+        private QuestionTypeEnum _QuestionType;
 
         //Relations
 
@@ -25,9 +26,9 @@ namespace QuizzGenerator.Domain.Entities
         #region Accessors
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ProfileId { get => _ProfileId; set => _ProfileId = value; }
-        public string Label { get => _Label; set => _Label = value; }
-        public bool HasRightToCreate { get => _HasRightToCreate; set => _HasRightToCreate = value; }
+        public int QuestionId { get => _QuestionId; set => _QuestionId = value; }
+        public string QuestionLabel { get => _QuestionLabel; set => _QuestionLabel = value; }
+        public QuestionTypeEnum QuestionType { get => _QuestionType; set => _QuestionType = value; }
         #endregion
     }
 }

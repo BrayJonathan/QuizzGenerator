@@ -53,10 +53,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CandidateServices.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\QuizzGenerator.Domain\QuizGenerator.Domain.csproj">
+      <Project>{b5666a0a-f647-43a8-94f9-01a1bc013979}</Project>
+      <Name>QuizGenerator.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

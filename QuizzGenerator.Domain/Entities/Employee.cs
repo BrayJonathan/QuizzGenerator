@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace QuizzGenerator.Domain.Entities
 {
+    [Table("Employee")]
     class Employee
     {
         #region Properties

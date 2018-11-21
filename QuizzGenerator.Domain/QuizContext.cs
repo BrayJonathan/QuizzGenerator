@@ -32,7 +32,6 @@ namespace QuizzGenerator.Domain
         #region Method
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-
         }
         #endregion
     }

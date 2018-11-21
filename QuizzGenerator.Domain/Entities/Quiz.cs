@@ -20,6 +20,7 @@ namespace QuizzGenerator.Domain.Entities
         private bool _IsRealized;
         private int _CurrentQuestion;
         private string _URL;
+        //EmployeeId of Creator
         private int _CreatedBy;
         //Relations
         public virtual Employee EmployeeCreator { get; set; }

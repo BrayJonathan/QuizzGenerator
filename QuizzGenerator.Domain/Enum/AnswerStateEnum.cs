@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QuizzGenerator.Services
+namespace QuizzGenerator.Domain.Enum
 {
-    public class Class1
+    public enum AnswerStateEnum : int
     {
+        IsCorrect = 1,
+        IsBad = 2,
+        None = 3
     }
 }

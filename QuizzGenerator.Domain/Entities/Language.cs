@@ -10,24 +10,32 @@ namespace QuizzGenerator.Domain.Entities
 {
     [Table("Language")]
     public class Language
-    
+
     {
-    #region properties
-    private int _LanguageID;
-    private string _Label;
-    #endregion
+        #region properties
+        //Fields
+        private int _LanguageID;
+        private string _Label;
+        private int _CreatedBy;
 
-    #region accessors
-    [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int LanguageID { get => _LanguageID; set => _LanguageID = value; }
-    public string Label { get => _Label; set => _Label = value; }
-    #endregion
+        //Relations
+        public virtual Employee EmployeeCreator { get; set; }
+        //Variables
+        #endregion
+
+        #region accessors
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int LanguageID { get => _LanguageID; set => _LanguageID = value; }
+        public string Label { get => _Label; set => _Label = value; }
+        [ForeignKey("EmployeeCreator"), Column("CreatedBy")]
+        public int CreatedBy { get => _CreatedBy; set => _CreatedBy = value; }
+        #endregion
 
 
 
-}
     }
+}
 
- 
+
 

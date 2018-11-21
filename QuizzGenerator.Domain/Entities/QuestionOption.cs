@@ -8,16 +8,18 @@ using System.Threading.Tasks;
 
 namespace QuizzGenerator.Domain.Entities
 {
-    [Table("Answer")]
-    public class Answer
+    [Table("QuestionOption")]
+    public class QuestionOption
     {
-        #region properties
+        #region 
+        //Fields
         private int _AnswerId;
         private string _Label;
         private bool _IsGood;
-
-       
-
+        private int _CreatedBy;
+        //Relations
+        public virtual Employee EmployeeCreator { get; set; }
+        //Variables
         #endregion
 
         #region accessors
@@ -26,7 +28,8 @@ namespace QuizzGenerator.Domain.Entities
         public int AnswerId { get => _AnswerId; set => _AnswerId = value; }
         public string Label { get => _Label; set => _Label = value; }
         public bool IsGood { get => _IsGood; set => _IsGood = value; }
-
+        [ForeignKey("EmployeeCreator"), Column("CreatedBy")]
+        public int CreatedBy { get => _CreatedBy; set => _CreatedBy = value; }
         #endregion
     }
 }

@@ -25,6 +25,7 @@ namespace QuizzGenerator.Domain
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<QuestionOption> QuestionOptions { get; set; }
+        public DbSet<Quiz> Quizzes { get; set; }
         public DbSet<Ratio> Ratios { get; set; }
         public DbSet<Result> Results { get; set; }
         #endregion

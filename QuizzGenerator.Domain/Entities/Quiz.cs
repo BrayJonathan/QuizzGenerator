@@ -7,11 +7,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace QuizzGenerator.Domain.Entities
-{   
+{
     [Table("Quiz")]
     public class Quiz
     {
         #region Properties
+        //Fields
         private int _QuizId;
         private DateTime _CreationDate;
         private double _Duration;
@@ -19,6 +20,11 @@ namespace QuizzGenerator.Domain.Entities
         private bool _IsRealized;
         private int _CurrentQuestion;
         private string _URL;
+        private int _CreatedBy;
+        //Relations
+        public virtual Employee EmployeeCreator { get; set; }
+
+        //Variables
         #endregion
 
         #region Accessors
@@ -31,6 +37,8 @@ namespace QuizzGenerator.Domain.Entities
         public bool IsRealized { get => _IsRealized; set => _IsRealized = value; }
         public int CurrentQuestion { get => _CurrentQuestion; set => _CurrentQuestion = value; }
         public string URL { get => _URL; set => _URL = value; }
+        [ForeignKey("EmployeeCreator"), Column("CreatedBy")]
+        public int CreatedBy { get => _CreatedBy; set => _CreatedBy = value; }
         #endregion
     }
 }

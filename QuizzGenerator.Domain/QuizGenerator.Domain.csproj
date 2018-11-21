@@ -48,7 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Entities\QuestionOption.cs" />
     <Compile Include="Entities\Candidate.cs" />
     <Compile Include="Entities\Employee.cs" />

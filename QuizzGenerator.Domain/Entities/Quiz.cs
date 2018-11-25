@@ -20,10 +20,11 @@ namespace QuizzGenerator.Domain.Entities
         private bool _IsRealized;
         private int _CurrentQuestion;
         private string _URL;
-        private int _CreatedBy;
+        private int _EmployeeId;
+        private int _CandidateId;
         //Relations
         public virtual Employee EmployeeCreator { get; set; }
-
+        public virtual Candidate Candidate { get; set; }
         //Variables
         #endregion
 
@@ -37,8 +38,10 @@ namespace QuizzGenerator.Domain.Entities
         public bool IsRealized { get => _IsRealized; set => _IsRealized = value; }
         public int CurrentQuestion { get => _CurrentQuestion; set => _CurrentQuestion = value; }
         public string URL { get => _URL; set => _URL = value; }
-        [ForeignKey("EmployeeCreator"), Column("CreatedBy")]
-        public int CreatedBy { get => _CreatedBy; set => _CreatedBy = value; }
+        [ForeignKey("EmployeeCreator"), Column("EmployeeId")]
+        public int EmployeeId { get => _EmployeeId; set => _EmployeeId = value; }
+        [ForeignKey("Candidate")]
+        public int CandidateId { get => _CandidateId; set => _CandidateId = value; }
         #endregion
     }
 }

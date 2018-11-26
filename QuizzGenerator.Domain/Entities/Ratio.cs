@@ -18,9 +18,11 @@ namespace QuizzGenerator.Domain.Entities
         private int _Confirmed;
         private int _Expert;
         private int _EmployeeId;
+       // private int _LevelID;
 
         //Relations
         public virtual Employee EmployeeCreator { get; set; }
+        public virtual ICollection<Level> LevelCreator { get; set; }
         //Variables
         #endregion
 

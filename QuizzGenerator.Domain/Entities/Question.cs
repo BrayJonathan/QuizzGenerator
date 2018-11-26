@@ -20,6 +20,8 @@ namespace QuizzGenerator.Domain.Entities
         private int _CreatedBy;
         //Relations
         public virtual Employee EmployeeCreator { get; set; }
+        public virtual ICollection<Quiz> Quizzes { get; set; }
+        public virtual ICollection<QuestionOption> QuestionOptions { get; set; }
         //Variables
         #endregion
 

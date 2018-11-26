@@ -19,6 +19,7 @@ namespace QuizzGenerator.Domain.Entities
 
         //Relations
         public virtual Employee EmployeeCreator { get; set; }
+        public virtual ICollection<Quiz> Quizzes { get; set; }
         //Variables
         #endregion
 
@@ -30,5 +31,7 @@ namespace QuizzGenerator.Domain.Entities
         [ForeignKey("EmployeeCreator"), Column("CreatedBy")]
         public int CreatedBy { get => _CreatedBy; set => _CreatedBy = value; }
         #endregion
+
+
     }
 }

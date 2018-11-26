@@ -12,6 +12,7 @@ namespace QuizzGenerator.Domain.Entities
     public class Quiz
     {
         #region Properties
+        //Fields
         private int _QuizId;
         private DateTime _CreationDate;
         private double _Duration;
@@ -19,6 +20,13 @@ namespace QuizzGenerator.Domain.Entities
         private bool _IsRealized;
         private int _CurrentQuestion;
         private string _URL;
+        private int _LevelId;
+        private int _LanguageId;
+
+        //Relations
+        public virtual Level Level { get; set; }
+        public virtual Language Language { get; set; }
+        public virtual ICollection<Question> Questions { get; set; }
         #endregion
 
         #region Accessors
@@ -31,6 +39,14 @@ namespace QuizzGenerator.Domain.Entities
         public bool IsRealized { get => _IsRealized; set => _IsRealized = value; }
         public int CurrentQuestion { get => _CurrentQuestion; set => _CurrentQuestion = value; }
         public string URL { get => _URL; set => _URL = value; }
+
+        [ForeignKey("Level")]
+        public int LevelId { get => _LevelId; set => _LevelId = value; }
+        [ForeignKey("Language")]
+        public int LanguageId { get => _LanguageId; set => _LanguageId = value; }
         #endregion
+
+
+
     }
 }

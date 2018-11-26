@@ -5,31 +5,31 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using QuizzGenerator.Domain.Enum;
 
 namespace QuizzGenerator.Domain.Entities
 {
-    [Table("Level")]
-    public class Level
+    [Table("Question")]
+    public class Question
     {
         #region Properties
         //Fields
-        private int _LevelID;
-        private string _Name;
+        private int _QuestionId;
+        private String _QuestionLabel;
+        private QuestionTypeEnum _QuestionType;
         private int _EmployeeId;
-
         //Relations
         public virtual Employee EmployeeCreator { get; set; }
-        public virtual ICollection<Candidate> Candidates {get;set;}
-        public virtual ICollection<Ratio> RatioCreator { get; set; }
         //Variables
         #endregion
 
         #region Accessors
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int LevelID { get => _LevelID; set => _LevelID = value; }
-        public string Name { get => _Name; set => _Name = value; }
-        [ForeignKey("EmployeeCreator"), Column("CreatedBy")]
+        public int QuestionId { get => _QuestionId; set => _QuestionId = value; }
+        public string QuestionLabel { get => _QuestionLabel; set => _QuestionLabel = value; }
+        public QuestionTypeEnum QuestionType { get => _QuestionType; set => _QuestionType = value; }
+        [ForeignKey("EmployeeCreator"),Column("EmployeeId")]
         public int EmployeeId { get => _EmployeeId; set => _EmployeeId = value; }
         #endregion
     }

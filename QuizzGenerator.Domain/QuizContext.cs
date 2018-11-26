@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,7 @@ namespace QuizzGenerator.Domain
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<QuestionOption> QuestionOptions { get; set; }
+        public DbSet<Quiz> Quizzes { get; set; }
         public DbSet<Ratio> Ratios { get; set; }
         public DbSet<Result> Results { get; set; }
         #endregion
@@ -32,6 +34,9 @@ namespace QuizzGenerator.Domain
         #region Method
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            //Turn off cascade deletes
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();   
         }
         #endregion
     }

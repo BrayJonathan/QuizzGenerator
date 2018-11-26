@@ -28,6 +28,7 @@ namespace QuizzGenerator.Domain.Entities
         public virtual ICollection<Candidate> CandidatesCreated { get; set; } 
         public virtual ICollection<Question> QuestionsCreated { get; set; }
         public virtual ICollection<QuestionOption> QuestionOptionsCreated { get; set; }
+        public virtual ICollection<Quiz> QuizzesCreated { get; set; }
 
 
         //Variables

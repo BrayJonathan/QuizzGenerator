@@ -17,7 +17,7 @@ namespace QuizzGenerator.Domain.Entities
         private int _QuestionId;
         private String _QuestionLabel;
         private QuestionTypeEnum _QuestionType;
-        private int _CreatedBy;
+        private int _EmployeeId;
         //Relations
         public virtual Employee EmployeeCreator { get; set; }
         public virtual ICollection<Quiz> Quizzes { get; set; }
@@ -31,8 +31,8 @@ namespace QuizzGenerator.Domain.Entities
         public int QuestionId { get => _QuestionId; set => _QuestionId = value; }
         public string QuestionLabel { get => _QuestionLabel; set => _QuestionLabel = value; }
         public QuestionTypeEnum QuestionType { get => _QuestionType; set => _QuestionType = value; }
-        [ForeignKey("EmployeeCreator"),Column("CreatedBy")]
-        public int CreatedBy { get => _CreatedBy; set => _CreatedBy = value; }
+        [ForeignKey("EmployeeCreator"),Column("EmployeeId")]
+        public int EmployeeId { get => _EmployeeId; set => _EmployeeId = value; }
         #endregion
     }
 }

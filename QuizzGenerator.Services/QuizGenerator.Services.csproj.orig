@@ -49,6 +49,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IQuizService.cs" />
+<<<<<<< HEAD
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\QuizService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\QuizzGenerator.Domain\QuizGenerator.Domain.csproj">
+      <Project>{b5666a0a-f647-43a8-94f9-01a1bc013979}</Project>
+=======
     <Compile Include="Interfaces\ICandidateServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\QuizService.cs" />
@@ -59,7 +67,8 @@
     <Folder Include="Services\" />
     <ProjectReference Include="..\QuizzGenerator.Domain\QuizGenerator.Domain.csproj">
       <Project>{b5666a0a-f647-43a8-94f9-01a1bc013979}</Project>
-      <!--<WCFMetadata Include="Connected Services\" />-->
+    <WCFMetadata Include="Connected Services\" />
+>>>>>>> 73569fbe31f708acda8b3cf718483bf54685de27
       <Name>QuizGenerator.Domain</Name>
     </ProjectReference>
   </ItemGroup>

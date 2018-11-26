@@ -15,11 +15,13 @@ namespace QuizzGenerator.Domain.Entities
         //Fields
         private int _LevelID;
         private string _Name;
-        private int _CreatedBy;
+        private int _EmployeeId;
 
         //Relations
         public virtual Employee EmployeeCreator { get; set; }
         public virtual ICollection<Quiz> Quizzes { get; set; }
+        public virtual ICollection<Candidate> Candidates {get;set;}
+        public virtual ICollection<Ratio> RatioCreator { get; set; }
         //Variables
         #endregion
 
@@ -29,7 +31,7 @@ namespace QuizzGenerator.Domain.Entities
         public int LevelID { get => _LevelID; set => _LevelID = value; }
         public string Name { get => _Name; set => _Name = value; }
         [ForeignKey("EmployeeCreator"), Column("CreatedBy")]
-        public int CreatedBy { get => _CreatedBy; set => _CreatedBy = value; }
+        public int EmployeeId { get => _EmployeeId; set => _EmployeeId = value; }
         #endregion
 
 

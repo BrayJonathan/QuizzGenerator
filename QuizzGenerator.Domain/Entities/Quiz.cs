@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace QuizzGenerator.Domain.Entities
-{   
+{
     [Table("Quiz")]
     public class Quiz
     {
@@ -26,6 +26,12 @@ namespace QuizzGenerator.Domain.Entities
         //Relations
         public virtual Level Level { get; set; }
         public virtual Language Language { get; set; }
+        private int _EmployeeId;
+        private int _CandidateId;
+        //Relations
+        public virtual Employee EmployeeCreator { get; set; }
+        public virtual Candidate Candidate { get; set; }
+        //Variables
         public virtual ICollection<Question> Questions { get; set; }
         #endregion
 
@@ -43,6 +49,10 @@ namespace QuizzGenerator.Domain.Entities
         [ForeignKey("Level")]
         public int LevelId { get => _LevelId; set => _LevelId = value; }
         [ForeignKey("Language")]
+        [ForeignKey("EmployeeCreator"), Column("EmployeeId")]
+        public int EmployeeId { get => _EmployeeId; set => _EmployeeId = value; }
+        [ForeignKey("Candidate")]
+        public int CandidateId { get => _CandidateId; set => _CandidateId = value; }
         public int LanguageId { get => _LanguageId; set => _LanguageId = value; }
         #endregion
 

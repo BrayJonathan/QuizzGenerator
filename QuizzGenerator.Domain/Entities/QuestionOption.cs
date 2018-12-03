@@ -19,6 +19,7 @@ namespace QuizzGenerator.Domain.Entities
         private int _EmployeeId;
         //Relations
         public virtual Employee EmployeeCreator { get; set; }
+        public virtual ICollection<Question> Questions { get; set; }
         //Variables
         #endregion
 

@@ -48,11 +48,11 @@ namespace QuizzGenerator.Domain.Entities
 
         [ForeignKey("Level")]
         public int LevelId { get => _LevelId; set => _LevelId = value; }
-        [ForeignKey("Language")]
         [ForeignKey("EmployeeCreator"), Column("EmployeeId")]
         public int EmployeeId { get => _EmployeeId; set => _EmployeeId = value; }
         [ForeignKey("Candidate")]
         public int CandidateId { get => _CandidateId; set => _CandidateId = value; }
+        [ForeignKey("Language")]
         public int LanguageId { get => _LanguageId; set => _LanguageId = value; }
         #endregion
 

@@ -10,7 +10,7 @@ using QuizzGenerator.Domain.Enum;
 namespace QuizzGenerator.Domain.Entities
 {
     [Table("Result")]
-    class Result
+    public class Result
     {
         #region Properties
         //Fields
@@ -19,7 +19,9 @@ namespace QuizzGenerator.Domain.Entities
         private string _Comment;
 
         //Relations
-
+        public virtual ICollection<QuestionOption> QuestionOptions { get; set; }
+        public virtual ICollection<Quiz> Quizzes { get; set; }
+        public virtual ICollection<Question> Questions { get; set; }
         //Variables
         #endregion
 

@@ -20,19 +20,23 @@ namespace QuizzGenerator.Domain.Entities
         private bool _IsRealized;
         private int _CurrentQuestion;
         private string _URL;
+
         private int _LevelId;
+        private int _EmployeeId;
+        private int _CandidateId;
         private int _LanguageId;
+        private int _ResultId;
+
 
         //Relations
         public virtual Level Level { get; set; }
-        public virtual Language Language { get; set; }
-        private int _EmployeeId;
-        private int _CandidateId;
-        //Relations
         public virtual Employee EmployeeCreator { get; set; }
         public virtual Candidate Candidate { get; set; }
-        //Variables
+        public virtual Language Language { get; set; }
+        public virtual Result Result { get; set; }
         public virtual ICollection<Question> Questions { get; set; }
+       
+
         #endregion
 
         #region Accessors
@@ -45,15 +49,16 @@ namespace QuizzGenerator.Domain.Entities
         public bool IsRealized { get => _IsRealized; set => _IsRealized = value; }
         public int CurrentQuestion { get => _CurrentQuestion; set => _CurrentQuestion = value; }
         public string URL { get => _URL; set => _URL = value; }
-
         [ForeignKey("Level")]
         public int LevelId { get => _LevelId; set => _LevelId = value; }
         [ForeignKey("EmployeeCreator"), Column("EmployeeId")]
         public int EmployeeId { get => _EmployeeId; set => _EmployeeId = value; }
-        [ForeignKey("Candidate")]
+        [ForeignKey("Candidate"), Column("CandidateId")]
         public int CandidateId { get => _CandidateId; set => _CandidateId = value; }
-        [ForeignKey("Language")]
+        [ForeignKey("Language"), Column("LanguageId")]
         public int LanguageId { get => _LanguageId; set => _LanguageId = value; }
+        [ForeignKey("Result"), Column("ResultId")]
+        public int ResultId { get => _ResultId; set => _ResultId = value; }
         #endregion
 
 

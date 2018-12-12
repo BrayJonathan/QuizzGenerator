@@ -18,11 +18,11 @@ namespace QuizzGenerator.Domain.Entities
         private int _Confirmed;
         private int _Expert;
         private int _EmployeeId;
-       // private int _LevelID;
+      
 
         //Relations
-        public virtual Employee EmployeeCreator { get; set; }
-        public virtual ICollection<Level> LevelCreator { get; set; }
+        public virtual Employee Employee { get; set; }
+        public virtual ICollection<Level> Levels { get; set; }
         //Variables
         #endregion
 
@@ -33,7 +33,7 @@ namespace QuizzGenerator.Domain.Entities
         public int Junior { get => _Junior; set => _Junior = value; }
         public int Confirmed { get => _Confirmed; set => _Confirmed = value; }
         public int Expert { get => _Expert; set => _Expert = value; }
-        [ForeignKey("EmployeeCreator"), Column("EmployeeId")]
+        [ForeignKey("Employee"), Column("EmployeeId")]
         public int EmployeeId { get => _EmployeeId; set => _EmployeeId = value; }
         #endregion
     }

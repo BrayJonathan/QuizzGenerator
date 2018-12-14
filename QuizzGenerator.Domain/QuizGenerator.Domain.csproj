@@ -60,9 +60,6 @@
     <Compile Include="Entities\Level.cs" />
     <Compile Include="Enum\AnswerStateEnum.cs" />
     <Compile Include="Enum\QuestionTypeEnum.cs" />
-    <Compile Include="Migrations\201812082321548_MyfirstMigration.cs" />
-    <Compile Include="Migrations\201812082321548_MyfirstMigration.Designer.cs">
-      <DependentUpon>201812082321548_MyfirstMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,8 +77,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201812082321548_MyfirstMigration.resx">
-      <DependentUpon>201812082321548_MyfirstMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -13,22 +13,23 @@ namespace QuizzGenerator.Domain.Entities
     {
         #region Properties
         //Fields
-        private int _LevelID;
+        private int _LevelId;
         private string _Name;
         private int _EmployeeId;
 
         //Relations
         public virtual Employee EmployeeCreator { get; set; }
         public virtual ICollection<Quiz> Quizzes { get; set; }
-        public virtual ICollection<Candidate> Candidates {get;set;}
-        public virtual ICollection<Ratio> RatioCreator { get; set; }
+        public virtual ICollection<Candidate> Candidates { get; set; }
+        public virtual ICollection<Ratio> Ratios { get; set; }
+        public virtual ICollection<Question> Questions { get; set; } 
         //Variables
         #endregion
 
         #region Accessors
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int LevelID { get => _LevelID; set => _LevelID = value; }
+        public int LevelID { get => _LevelId; set => _LevelId = value; }
         public string Name { get => _Name; set => _Name = value; }
         [ForeignKey("EmployeeCreator"), Column("EmployeeId")]
         public int EmployeeId { get => _EmployeeId; set => _EmployeeId = value; }

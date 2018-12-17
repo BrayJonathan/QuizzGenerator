@@ -14,15 +14,16 @@ namespace QuizzGenerator.Domain.Entities
         #region properties
         //Fields
         private int _RatioId;
-        private int _Junior;
-        private int _Confirmed;
-        private int _Expert;
         private int _EmployeeId;
-      
+        private int _LevelId;
+        private int _LevelRatioId;
+        private double _Percent;
+
 
         //Relations
         public virtual Employee Employee { get; set; }
-        public virtual ICollection<Level> Levels { get; set; }
+        public virtual Level Level { get; set; }
+        public virtual Level LevelRatio { get; set; }
         //Variables
         #endregion
 
@@ -30,11 +31,13 @@ namespace QuizzGenerator.Domain.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int RatioId { get => _RatioId; set => _RatioId = value; }
-        public int Junior { get => _Junior; set => _Junior = value; }
-        public int Confirmed { get => _Confirmed; set => _Confirmed = value; }
-        public int Expert { get => _Expert; set => _Expert = value; }
+        [ForeignKey("LevelRatio")]
+        public int LevelRatioId { get => _LevelRatioId; set => _LevelRatioId = value; }
         [ForeignKey("Employee"), Column("EmployeeId")]
         public int EmployeeId { get => _EmployeeId; set => _EmployeeId = value; }
+        [ForeignKey("Level")]
+        public int LevelId { get => _LevelId; set => _LevelId = value; }
+        public double Percent { get => _Percent; set => _Percent = value; }
         #endregion
     }
 }

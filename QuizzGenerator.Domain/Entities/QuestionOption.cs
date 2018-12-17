@@ -13,25 +13,27 @@ namespace QuizzGenerator.Domain.Entities
     {
         #region 
         //Fields
-        private int _AnswerId;
+        private int _QuestionOptionId;
         private string _Label;
         private bool _IsGood;
         private int _EmployeeId;
+        private int _QuestionId;
         //Relations
         public virtual Employee EmployeeCreator { get; set; }
-        public virtual ICollection<Question> Questions { get; set; }
-        public virtual ICollection<Result> Results { get; set; }
+        public virtual Question Question { get; set; }
         //Variables
         #endregion
 
         #region accessors
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int AnswerId { get => _AnswerId; set => _AnswerId = value; }
+        public int QuestionOptionId { get => _QuestionOptionId; set => _QuestionOptionId = value; }
         public string Label { get => _Label; set => _Label = value; }
         public bool IsGood { get => _IsGood; set => _IsGood = value; }
         [ForeignKey("EmployeeCreator"), Column("EmployeeId")]
         public int EmployeeId { get => _EmployeeId; set => _EmployeeId = value; }
+        [ForeignKey("Question")]
+        public int QuestionId { get => _QuestionId; set => _QuestionId = value; }
         #endregion
     }
 }

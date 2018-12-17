@@ -32,7 +32,6 @@ namespace QuizzGenerator.Domain.Entities
         public virtual Employee EmployeeCreator { get; set; }
         public virtual Candidate Candidate { get; set; }
         public virtual Language Language { get; set; }
-        public virtual ICollection<Question> Questions { get; set; }
         public virtual ICollection<Result> Results { get; set; }
 
         #endregion

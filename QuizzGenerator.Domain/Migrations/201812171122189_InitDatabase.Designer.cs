@@ -13,7 +13,7 @@ namespace QuizzGenerator.Domain.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201812171028394_InitDatabase"; }
+            get { return "201812171122189_InitDatabase"; }
         }
         
         string IMigrationMetadata.Source

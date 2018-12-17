@@ -17,11 +17,13 @@ namespace QuizzGenerator.Domain.Entities
         private int _ResultId;
         private AnswerStateEnum _AnsweState;
         private string _Comment;
+        private int _QuizId;
+        private int _QuestionId;
 
         //Relations
         public virtual ICollection<QuestionOption> QuestionOptions { get; set; }
-        public virtual ICollection<Quiz> Quizzes { get; set; }
-        public virtual ICollection<Question> Questions { get; set; }
+        public virtual Quiz Quiz { get; set; }
+        public virtual Question Question { get; set; }
         //Variables
         #endregion
 
@@ -31,6 +33,10 @@ namespace QuizzGenerator.Domain.Entities
         public int ResultId { get => _ResultId; set => _ResultId = value; }
         public AnswerStateEnum AnsweState { get => _AnsweState; set => _AnsweState = value; }
         public string Comment { get => _Comment; set => _Comment = value; }
+        [ForeignKey("Quiz"), Column("QuizId")]
+        public int QuizId { get => _QuizId; set => _QuizId = value; }
+        [ForeignKey("Question"), Column("QuestionId")]
+        public int QuestionId { get => _QuestionId; set => _QuestionId = value; }
         #endregion
     }
 }

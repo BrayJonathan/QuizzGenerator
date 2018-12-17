@@ -20,14 +20,14 @@ namespace QuizzGenerator.Domain.Entities
         private int _EmployeeId;
         private int _LevelId;
         private int _LanguageId;
-        private int _ResultId;
+        
         //Relations
         public virtual Employee EmployeeCreator { get; set; }
         public virtual ICollection<Quiz> Quizzes { get; set; }
         public virtual ICollection<QuestionOption> QuestionOptions { get; set; }
         public virtual Level Level { get; set; }
         public virtual Language Language { get; set; }
-        public virtual Result Result { get; set; }
+        public virtual ICollection<Result> Results { get; set; }
         //Variables
         #endregion
 
@@ -43,8 +43,6 @@ namespace QuizzGenerator.Domain.Entities
         public int LevelId { get => _LevelId; set => _LevelId = value; }
         [ForeignKey("Language"), Column("LanguageId")]
         public int LanguageId { get => _LanguageId; set => _LanguageId = value; }
-        [ForeignKey("Result"), Column("ResultId")]
-        public int ResultId { get => _ResultId; set => _ResultId = value; }
         #endregion
     }
 }

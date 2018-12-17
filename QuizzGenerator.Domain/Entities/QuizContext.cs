@@ -25,7 +25,6 @@ namespace QuizzGenerator.Domain.Entities
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Language> Languages { get; set; }
         public DbSet<Level> Levels { get; set; }
-        public DbSet<Profile> Profiles { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<QuestionOption> QuestionOptions { get; set; }
         public DbSet<Quiz> Quizzes { get; set; }

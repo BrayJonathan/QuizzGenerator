@@ -3,7 +3,7 @@ namespace QuizzGenerator.Domain.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class FirstMigration : DbMigration
+    public partial class initDataBase : DbMigration
     {
         public override void Up()
         {
@@ -32,10 +32,71 @@ namespace QuizzGenerator.Domain.Migrations
                         BirthDate = c.DateTime(nullable: false),
                         Email = c.String(),
                         ProfileId = c.Int(nullable: false),
+                        ApplicationUserId = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.EmployeeId)
+                .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUserId)
                 .ForeignKey("dbo.Profile", t => t.ProfileId)
-                .Index(t => t.ProfileId);
+                .Index(t => t.ProfileId)
+                .Index(t => t.ApplicationUserId);
+            
+            CreateTable(
+                "dbo.AspNetUsers",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        Email = c.String(maxLength: 256),
+                        EmailConfirmed = c.Boolean(nullable: false),
+                        PasswordHash = c.String(),
+                        SecurityStamp = c.String(),
+                        PhoneNumber = c.String(),
+                        PhoneNumberConfirmed = c.Boolean(nullable: false),
+                        TwoFactorEnabled = c.Boolean(nullable: false),
+                        LockoutEndDateUtc = c.DateTime(),
+                        LockoutEnabled = c.Boolean(nullable: false),
+                        AccessFailedCount = c.Int(nullable: false),
+                        UserName = c.String(nullable: false, maxLength: 256),
+                    })
+                .PrimaryKey(t => t.Id)
+                .Index(t => t.UserName, unique: true, name: "UserNameIndex");
+            
+            CreateTable(
+                "dbo.AspNetUserClaims",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        UserId = c.String(nullable: false, maxLength: 128),
+                        ClaimType = c.String(),
+                        ClaimValue = c.String(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId)
+                .Index(t => t.UserId);
+            
+            CreateTable(
+                "dbo.AspNetUserLogins",
+                c => new
+                    {
+                        LoginProvider = c.String(nullable: false, maxLength: 128),
+                        ProviderKey = c.String(nullable: false, maxLength: 128),
+                        UserId = c.String(nullable: false, maxLength: 128),
+                    })
+                .PrimaryKey(t => new { t.LoginProvider, t.ProviderKey, t.UserId })
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId)
+                .Index(t => t.UserId);
+            
+            CreateTable(
+                "dbo.AspNetUserRoles",
+                c => new
+                    {
+                        UserId = c.String(nullable: false, maxLength: 128),
+                        RoleId = c.String(nullable: false, maxLength: 128),
+                    })
+                .PrimaryKey(t => new { t.UserId, t.RoleId })
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId)
+                .ForeignKey("dbo.AspNetRoles", t => t.RoleId)
+                .Index(t => t.UserId)
+                .Index(t => t.RoleId);
             
             CreateTable(
                 "dbo.Language",
@@ -160,6 +221,16 @@ namespace QuizzGenerator.Domain.Migrations
                 .PrimaryKey(t => t.ProfileId);
             
             CreateTable(
+                "dbo.AspNetRoles",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        Name = c.String(nullable: false, maxLength: 256),
+                    })
+                .PrimaryKey(t => t.Id)
+                .Index(t => t.Name, unique: true, name: "RoleNameIndex");
+            
+            CreateTable(
                 "dbo.LanguageCandidates",
                 c => new
                     {
@@ -241,6 +312,7 @@ namespace QuizzGenerator.Domain.Migrations
         
         public override void Down()
         {
+            DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.Candidate", "EmployeeId", "dbo.Employee");
             DropForeignKey("dbo.Employee", "ProfileId", "dbo.Profile");
             DropForeignKey("dbo.Question", "ResultId", "dbo.Result");
@@ -268,6 +340,10 @@ namespace QuizzGenerator.Domain.Migrations
             DropForeignKey("dbo.Language", "EmployeeId", "dbo.Employee");
             DropForeignKey("dbo.LanguageCandidates", "Candidate_CandidateID", "dbo.Candidate");
             DropForeignKey("dbo.LanguageCandidates", "Language_LanguageID", "dbo.Language");
+            DropForeignKey("dbo.Employee", "ApplicationUserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropIndex("dbo.RatioLevels", new[] { "Level_LevelID" });
             DropIndex("dbo.RatioLevels", new[] { "Ratio_RatioId" });
             DropIndex("dbo.QuestionOptionResults", new[] { "Result_ResultId" });
@@ -280,6 +356,7 @@ namespace QuizzGenerator.Domain.Migrations
             DropIndex("dbo.LevelCandidates", new[] { "Level_LevelID" });
             DropIndex("dbo.LanguageCandidates", new[] { "Candidate_CandidateID" });
             DropIndex("dbo.LanguageCandidates", new[] { "Language_LanguageID" });
+            DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.Ratio", new[] { "EmployeeId" });
             DropIndex("dbo.QuestionOption", new[] { "EmployeeId" });
             DropIndex("dbo.Quiz", new[] { "ResultId" });
@@ -293,6 +370,12 @@ namespace QuizzGenerator.Domain.Migrations
             DropIndex("dbo.Question", new[] { "LevelId" });
             DropIndex("dbo.Question", new[] { "EmployeeId" });
             DropIndex("dbo.Language", new[] { "EmployeeId" });
+            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
+            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
+            DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
+            DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
+            DropIndex("dbo.AspNetUsers", "UserNameIndex");
+            DropIndex("dbo.Employee", new[] { "ApplicationUserId" });
             DropIndex("dbo.Employee", new[] { "ProfileId" });
             DropIndex("dbo.Candidate", new[] { "EmployeeId" });
             DropTable("dbo.RatioLevels");
@@ -301,6 +384,7 @@ namespace QuizzGenerator.Domain.Migrations
             DropTable("dbo.QuizQuestions");
             DropTable("dbo.LevelCandidates");
             DropTable("dbo.LanguageCandidates");
+            DropTable("dbo.AspNetRoles");
             DropTable("dbo.Profile");
             DropTable("dbo.Ratio");
             DropTable("dbo.QuestionOption");
@@ -309,6 +393,10 @@ namespace QuizzGenerator.Domain.Migrations
             DropTable("dbo.Level");
             DropTable("dbo.Question");
             DropTable("dbo.Language");
+            DropTable("dbo.AspNetUserRoles");
+            DropTable("dbo.AspNetUserLogins");
+            DropTable("dbo.AspNetUserClaims");
+            DropTable("dbo.AspNetUsers");
             DropTable("dbo.Employee");
             DropTable("dbo.Candidate");
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuizGenerator.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -19,6 +20,7 @@ namespace QuizzGenerator.Domain.Entities
         private DateTime _BirthDate;
         private string _Email;
         private int _ProfileId;
+        private String _ApplicationUserId;
 
         //Relations
         public virtual Profile Profile { get; set; }
@@ -29,6 +31,7 @@ namespace QuizzGenerator.Domain.Entities
         public virtual ICollection<Question> QuestionsCreated { get; set; }
         public virtual ICollection<QuestionOption> QuestionOptionsCreated { get; set; }
         public virtual ICollection<Quiz> QuizzesCreated { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
         #endregion
 
 
@@ -42,6 +45,8 @@ namespace QuizzGenerator.Domain.Entities
         public string Email { get => _Email; set => _Email = value; }
         [ForeignKey("Profile")]
         public int ProfileId { get => _ProfileId; set => _ProfileId = value; }
+        [ForeignKey("ApplicationUser")]
+        public string ApplicationUserId { get => _ApplicationUserId; set => _ApplicationUserId = value; }
         #endregion
     }
 }

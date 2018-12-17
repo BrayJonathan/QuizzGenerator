@@ -5,11 +5,13 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Identity.EntityFramework;
+using QuizGenerator.Identity;
 using QuizzGenerator.Domain.Entities;
 
-namespace QuizzGenerator.Domain
+namespace QuizzGenerator.Domain.Entities
 {
-    class QuizContext : DbContext
+    public class QuizContext : IdentityDbContext<ApplicationUser>
     {
         #region Constructors
         //Remenber to change Connection String in App.Config
@@ -37,6 +39,12 @@ namespace QuizzGenerator.Domain
             //Turn off cascade deletes
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();   
+            base.OnModelCreating(modelBuilder);
+        }
+
+        public static QuizContext Create()
+        {
+            return new QuizContext();
         }
         #endregion
     }

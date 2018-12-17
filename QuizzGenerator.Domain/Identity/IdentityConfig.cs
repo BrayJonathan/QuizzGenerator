@@ -13,7 +13,7 @@ using Microsoft.Owin.Security;
 using QuizzGenerator.Domain;
 using QuizzGenerator.Domain.Entities;
 
-namespace QuizGenerator.Identity
+namespace QuizGenerator.Domain.Identity
 {
     public class EmailService : IIdentityMessageService
     {

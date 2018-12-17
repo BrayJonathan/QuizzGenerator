@@ -1,4 +1,4 @@
-﻿using QuizGenerator.Identity;
+﻿using QuizGenerator.Domain.Identity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

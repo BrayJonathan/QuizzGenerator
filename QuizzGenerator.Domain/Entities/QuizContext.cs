@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity.EntityFramework;
-using QuizGenerator.Identity;
+using QuizGenerator.Domain.Identity;
 using QuizzGenerator.Domain.Entities;
 
 namespace QuizzGenerator.Domain.Entities

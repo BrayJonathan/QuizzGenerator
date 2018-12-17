@@ -7,7 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using QuizGenerator.Domain.ViewModels;
-using QuizGenerator.Identity;
+using QuizGenerator.Domain.Identity;
 
 namespace QuizGenerator.Web.Controllers
 {

@@ -3,7 +3,7 @@ namespace QuizzGenerator.Domain.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitDatabase : DbMigration
+    public partial class intiDatabase : DbMigration
     {
         public override void Up()
         {
@@ -30,14 +30,10 @@ namespace QuizzGenerator.Domain.Migrations
                         LastName = c.String(),
                         FirstName = c.String(),
                         BirthDate = c.DateTime(nullable: false),
-                        Email = c.String(),
-                        ProfileId = c.Int(nullable: false),
                         ApplicationUserId = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.EmployeeId)
                 .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUserId)
-                .ForeignKey("dbo.Profile", t => t.ProfileId)
-                .Index(t => t.ProfileId)
                 .Index(t => t.ApplicationUserId);
             
             CreateTable(
@@ -97,16 +93,6 @@ namespace QuizzGenerator.Domain.Migrations
                 .ForeignKey("dbo.AspNetRoles", t => t.RoleId)
                 .Index(t => t.UserId)
                 .Index(t => t.RoleId);
-            
-            CreateTable(
-                "dbo.Profile",
-                c => new
-                    {
-                        ProfileId = c.Int(nullable: false, identity: true),
-                        Label = c.String(),
-                        HasRightToCreate = c.Boolean(nullable: false),
-                    })
-                .PrimaryKey(t => t.ProfileId);
             
             CreateTable(
                 "dbo.Language",
@@ -301,7 +287,6 @@ namespace QuizzGenerator.Domain.Migrations
             DropForeignKey("dbo.LanguageCandidates", "Candidate_CandidateID", "dbo.Candidate");
             DropForeignKey("dbo.LanguageCandidates", "Language_LanguageID", "dbo.Language");
             DropForeignKey("dbo.Candidate", "EmployeeId", "dbo.Employee");
-            DropForeignKey("dbo.Employee", "ProfileId", "dbo.Profile");
             DropForeignKey("dbo.Employee", "ApplicationUserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
@@ -336,7 +321,6 @@ namespace QuizzGenerator.Domain.Migrations
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.Employee", new[] { "ApplicationUserId" });
-            DropIndex("dbo.Employee", new[] { "ProfileId" });
             DropIndex("dbo.Candidate", new[] { "EmployeeId" });
             DropTable("dbo.LevelCandidates");
             DropTable("dbo.LanguageCandidates");
@@ -348,7 +332,6 @@ namespace QuizzGenerator.Domain.Migrations
             DropTable("dbo.Level");
             DropTable("dbo.Question");
             DropTable("dbo.Language");
-            DropTable("dbo.Profile");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");

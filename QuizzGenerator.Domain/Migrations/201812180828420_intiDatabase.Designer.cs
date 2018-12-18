@@ -7,13 +7,13 @@ namespace QuizzGenerator.Domain.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class InitDatabase : IMigrationMetadata
+    public sealed partial class intiDatabase : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitDatabase));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(intiDatabase));
         
         string IMigrationMetadata.Id
         {
-            get { return "201812171122189_InitDatabase"; }
+            get { return "201812180828420_intiDatabase"; }
         }
         
         string IMigrationMetadata.Source

@@ -53,7 +53,7 @@ namespace QuizzGenerator.Domain.ViewModels.Mapping
         }
         #endregion
 
-        
+        #region Map_Result
         public static ResultViewModels MapToResultViewModels(this Result result)
         {
             var resultVM = new ResultViewModels();
@@ -118,9 +118,9 @@ namespace QuizzGenerator.Domain.ViewModels.Mapping
 
             return result;
         }
+        #endregion
 
-
-
+        #region Map_Quiz
         public static QuizViewModels MapToQuizViewModels(this Quiz quiz)
         {
             var quizVM = new QuizViewModels();
@@ -200,7 +200,9 @@ namespace QuizzGenerator.Domain.ViewModels.Mapping
 
             return quiz;
         }
+        #endregion
 
+        #region Map_Candidate
         public static CandidateViewModels MapToCandidateViewModels(this Candidate candidate)
         {
             var candidateVM = new CandidateViewModels();
@@ -243,7 +245,7 @@ namespace QuizzGenerator.Domain.ViewModels.Mapping
 
             return candidate;
         }
-
+        #endregion
 
     }
 }

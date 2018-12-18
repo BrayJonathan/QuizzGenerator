@@ -61,6 +61,4 @@ namespace QuizzGenerator.Domain.ViewModels
         public ICollection<ResultViewModels> ResultViewModels { get => _ResultViewModels; set => _ResultViewModels = value; }
         #endregion
     }
-
-
 }

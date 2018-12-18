@@ -18,7 +18,6 @@ namespace QuizzGenerator.Domain.ViewModels
         #endregion
 
         #region Accessors
-     
         public int ResultId { get => _ResultId; set => _ResultId = value; }
         [Required]
         public AnswerStateEnum AnsweState { get => _AnsweState; set => _AnsweState = value; }

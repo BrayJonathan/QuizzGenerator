@@ -24,7 +24,6 @@ namespace QuizzGenerator.Domain.Entities
         public virtual ICollection<QuestionOption> QuestionOptions { get; set; }
         public virtual Quiz Quiz { get; set; }
         public virtual Question Question { get; set; }
-     
         #endregion
 
         #region Accessors

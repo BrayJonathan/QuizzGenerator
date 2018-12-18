@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using QuizzGenerator.Domain.Entities;
 using QuizzGenerator.Services.Interfaces;
+using QuizzGenerator.Domain.ViewModels;
+using QuizzGenerator.Domain.ViewModels.Mapping;
 
 namespace QuizzGenerator.Services.Services
 {
@@ -15,8 +17,23 @@ namespace QuizzGenerator.Services.Services
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public int AddNewBaseQuiz(Candidate model)
+        public int AddNewBaseQuiz(QuizViewModels quiz)
         {
+            try
+            {
+                using (QuizContext db = new QuizContext())
+                {
+                    db.Quizzes.Add(quiz.MapToQuiz());
+                    db.SaveChanges();
+
+                    //init quiz()
+                }
+            }
+            catch (Exception ex)
+            {
+                return -1;
+            }
+
             return 0;
         }
 
@@ -25,29 +42,81 @@ namespace QuizzGenerator.Services.Services
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public bool UpdateQuizAnswer(Quiz model)
+        public bool UpdateQuizAnswer(QuizViewModels model)
         {
-            return false;
+            try
+            {
+                using (QuizContext db = new QuizContext())
+                {
+
+                    Quiz quizToUpdate = db.Quizzes.Find(model.QuizId);
+                    quizToUpdate.LanguageId = model.LanguageId;
+                    quizToUpdate.LevelId = model.LevelId;
+                    quizToUpdate.IsRealized = model.IsRealized;
+                    quizToUpdate.CurrentQuestion = model.CurrentQuestion;
+                    quizToUpdate.Duration = model.Duration;
+                    quizToUpdate.URL = model.URL;
+                    quizToUpdate.QuestionNumber = model.QuestionNumber;
+                    //quizToUpdate.Results = model.Results;
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         /// <summary>
         /// Permet d'afficher la dropdownlist concérnant le choix de la techno
         /// </summary>
-        /// <param name="includeDisabled"></param>
+        /// <param name="includeDisabled">Inclure techno supprimer</param>
         /// <returns></returns>
         public Dictionary<int, string> GetTechnologies(bool includeDisabled)
         {
-            return new Dictionary<int, string>();
+            Dictionary<int, string> technos = new Dictionary<int, string>();
+            try
+            {
+                using (QuizContext db = new QuizContext())
+                {
+                    foreach (Language l in db.Languages.ToList())
+                    {
+                        technos.Add(l.LanguageID, l.Label);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return technos;
         }
 
         /// <summary>
         /// Permet d'afficher la dropdownlist concérnant le choix du niveau du candidat
         /// </summary>
-        /// <param name="includeDisabled"></param>
+        /// <param name="includeDisabled">Inclure les Level supprimer</param>
         /// <returns></returns>
-        public Dictionary<int, string> GetSkills(bool includeDisabled)
+        public Dictionary<int, string> GetLevel(bool includeDisabled)
         {
-            return new Dictionary<int, string>();
+            Dictionary<int, string> levels = new Dictionary<int, string>();
+            try
+
+            {
+                using (QuizContext db = new QuizContext())
+                {
+                    foreach (Level level in db.Levels.ToList())
+                    {
+                        levels.Add(level.LevelID, level.Name);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return levels;
         }
 
 
@@ -58,8 +127,30 @@ namespace QuizzGenerator.Services.Services
         /// <param name="technologyId"></param>
         /// <param name="skillLevelId"></param>
         /// <param name="quizQuestioncount"></param>
-        public void InitQuizQuestionList(int quizId, int technologyId, int skillLevelId, int quizQuestionCount)
+        public void InitQuizQuestionList(int quizId, int languageId, int levelId, int quizQuestionCount)
         {
+            List<Question> questions = new List<Question>();
+            try
+            {
+
+
+                using (QuizContext db = new QuizContext())
+                {
+                    Quiz quiz = db.Quizzes.Find(quizId);
+                    questions = db.Questions.Where(x => x.LanguageId == languageId).Where(x => x.LevelId == levelId).Take(quizQuestionCount).ToList();
+                    quiz.Results.ToList().AddRange(questions.Select(q => new Result() {
+                        QuestionId = q.QuestionId,
+                        AnsweState = Domain.Enum.AnswerStateEnum.None,
+                        QuizId = quizId,
+                    }));
+                    //a finir
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            
 
         }
 
@@ -85,11 +176,19 @@ namespace QuizzGenerator.Services.Services
         /// <returns></returns>
         public List<Quiz> GetQuizes()
         {
-            return new List<Quiz>();
+            List<Quiz> quizzes = new List<Quiz>();
+            try
+            {
+                using (QuizContext db = new QuizContext())
+                {
+                    quizzes = db.Quizzes.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return quizzes;
         }
-
-
-
-
     }
 }

@@ -26,6 +26,7 @@ namespace QuizzGenerator.Domain.ViewModels
         private int _EmployeeId;
         private string _EmployeeName;
         private CandidateViewModels _CandidateViewModels;
+        //private ICollection<ResultViewModels> _ResultViewModels;
         #endregion
 
         #region Accessors

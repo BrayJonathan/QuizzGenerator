@@ -40,6 +40,33 @@ namespace QuizzGenerator.Domain.ViewModels.Mapping
             return quizVM;
         }
 
+        public static Quiz MapToQuiz(this QuizViewModels quizVM)
+        {
+            var quiz = new Quiz();
+
+            if (quizVM == null)
+            {
+                return quiz;
+            }
+
+            quiz = new Quiz()
+            {
+                QuizId = quizVM.QuizId,
+                CreationDate = quizVM.CreationDate,
+                Duration = quizVM.Duration,
+                QuestionNumber = quizVM.QuestionNumber,
+                IsRealized = quizVM.IsRealized,
+                CurrentQuestion = quizVM.CurrentQuestion,
+                URL = quizVM.URL,
+                LevelId = quizVM.LevelId,
+                EmployeeId = quizVM.EmployeeId,
+                CandidateId = quizVM.CandidateViewModels.CandidateID,
+                LanguageId = quizVM.LanguageId,
+            };
+
+            return quiz;
+        }
+
         public static CandidateViewModels MapToCandidateViewModels(this Candidate candidate)
         {
             var candidateVM = new CandidateViewModels();

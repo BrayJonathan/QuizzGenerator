@@ -129,6 +129,7 @@
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="ViewModels\Mapping\Map.cs" />
     <Compile Include="ViewModels\QuizViewModels.cs" />
+    <Compile Include="ViewModels\ResultViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />

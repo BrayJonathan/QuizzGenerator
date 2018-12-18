@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using QuizzGenerator.Domain.Entities;
+using QuizzGenerator.Domain.ViewModels;
+using QuizzGenerator.Domain.ViewModels.Mapping;
+
 
 namespace QuizzGenerator.Services.Services
 {
@@ -14,18 +17,53 @@ namespace QuizzGenerator.Services.Services
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public int AddNewCandidate(Candidate model)
+        public int AddNewCandidate(CandidateViewModels candidateViewModel)
         {
+            try
+            {
+                using (QuizContext db = new QuizContext())
+                {
+                    var candidate = candidateViewModel.MapToCandidate();// à faire: remplacer par la methode mapping de amine
+                    db.Candidates.Add(candidate);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                return -1;
+            }
+
             return 0;
+
         }
 
         /// <summary>
         /// return all candidate liste
         /// </summary>
         /// <returns></returns>
-        public List<Candidate> GetCandidates()
+        public List<CandidateViewModels> GetCandidates()
         {
-            return new List<Candidate>();
+            List<CandidateViewModels> candidates = new List<CandidateViewModels>(); 
+            
+            try
+            {
+                using (QuizContext db = new QuizContext())
+                {
+                    foreach(Candidate c in db.Candidates)
+                    {
+                        candidates.Add(c.MapToCandidateViewModels());
+                    }
+                   
+                }
+            }
+            catch (Exception ex)
+            {
+                
+            }
+
+            return candidates;
+
+            //return new List<Candidate>();
         }
 
         /// <summary>
@@ -33,10 +71,24 @@ namespace QuizzGenerator.Services.Services
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public Candidate GetCandidateById(int id)
+        public CandidateViewModels GetCandidateById(int id)
         {
-            return new Candidate();
-        }
+            CandidateViewModels candidate = new CandidateViewModels(); 
+            try
+            {
+                using (QuizContext db = new QuizContext())
+                {
+                   candidate = db.Candidates.Find(id).MapToCandidateViewModels();
 
+                }
+            }
+            catch (Exception ex)
+            {
+                
+            }
+
+            return candidate;
+
+        }
     }
 }

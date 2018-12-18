@@ -82,7 +82,7 @@ namespace QuizzGenerator.Services.Services
                 {
                     foreach (Language l in db.Languages.ToList())
                     {
-                        technos.Add(l.LanguageID, l.Label);
+                        technos.Add(l.LanguageID, l.LanguageName);
                     }
                 }
             }

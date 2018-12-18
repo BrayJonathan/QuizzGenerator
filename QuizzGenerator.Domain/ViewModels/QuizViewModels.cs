@@ -26,7 +26,7 @@ namespace QuizzGenerator.Domain.ViewModels
         private int _EmployeeId;
         private string _EmployeeName;
         private CandidateViewModels _CandidateViewModels;
-        //private ICollection<ResultViewModels> _ResultViewModels;
+        private ICollection<ResultViewModels> _ResultViewModels;
         #endregion
 
         #region Accessors
@@ -57,6 +57,8 @@ namespace QuizzGenerator.Domain.ViewModels
         public string EmployeeName { get => _EmployeeName; set => _EmployeeName = value; }
         [Required]
         public CandidateViewModels CandidateViewModels { get => _CandidateViewModels; set => _CandidateViewModels = value; }
+        [Required]
+        public ICollection<ResultViewModels> ResultViewModels { get => _ResultViewModels; set => _ResultViewModels = value; }
         #endregion
     }
 

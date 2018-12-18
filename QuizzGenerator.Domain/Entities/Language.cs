@@ -15,7 +15,7 @@ namespace QuizzGenerator.Domain.Entities
         #region properties
         //Fields
         private int _LanguageID;
-        private string _Label;
+        private string _LanguageName;
         private int _EmployeeId;
 
         //Relations
@@ -30,7 +30,7 @@ namespace QuizzGenerator.Domain.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int LanguageID { get => _LanguageID; set => _LanguageID = value; }
-        public string Label { get => _Label; set => _Label = value; }
+        public string LanguageName { get => _LanguageName; set => _LanguageName = value; }
         [ForeignKey("EmployeeCreator"), Column("EmployeeId")]
         public int EmployeeId { get => _EmployeeId; set => _EmployeeId = value; }
         #endregion

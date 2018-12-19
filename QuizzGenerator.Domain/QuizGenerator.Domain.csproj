@@ -117,9 +117,9 @@
     <Compile Include="Enum\AnswerStateEnum.cs" />
     <Compile Include="Enum\QuestionTypeEnum.cs" />
     <Compile Include="Identity\IdentityConfig.cs" />
-    <Compile Include="Migrations\201812180828420_intiDatabase.cs" />
-    <Compile Include="Migrations\201812180828420_intiDatabase.Designer.cs">
-      <DependentUpon>201812180828420_intiDatabase.cs</DependentUpon>
+    <Compile Include="Migrations\201812191128445_initDataBase.cs" />
+    <Compile Include="Migrations\201812191128445_initDataBase.Designer.cs">
+      <DependentUpon>201812191128445_initDataBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -142,8 +142,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201812180828420_intiDatabase.resx">
-      <DependentUpon>201812180828420_intiDatabase.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812191128445_initDataBase.resx">
+      <DependentUpon>201812191128445_initDataBase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

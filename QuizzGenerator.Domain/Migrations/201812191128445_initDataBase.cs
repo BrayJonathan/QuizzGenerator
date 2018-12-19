@@ -3,7 +3,7 @@ namespace QuizzGenerator.Domain.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class intiDatabase : DbMigration
+    public partial class initDataBase : DbMigration
     {
         public override void Up()
         {
@@ -99,7 +99,7 @@ namespace QuizzGenerator.Domain.Migrations
                 c => new
                     {
                         LanguageID = c.Int(nullable: false, identity: true),
-                        Label = c.String(),
+                        LanguageName = c.String(),
                         EmployeeId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.LanguageID)

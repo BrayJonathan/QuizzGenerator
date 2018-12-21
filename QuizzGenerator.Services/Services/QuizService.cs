@@ -44,6 +44,8 @@ namespace QuizzGenerator.Services.Services
         /// <returns></returns>
         public bool UpdateQuizAnswer(QuizViewModels model)
         {
+            List<Result> results = new List<Result>();
+            model.ResultViewModels.ToList().ForEach(x => results.Add(x.MapToResult()));
             try
             {
                 using (QuizContext db = new QuizContext())
@@ -57,7 +59,7 @@ namespace QuizzGenerator.Services.Services
                     quizToUpdate.Duration = model.Duration;
                     quizToUpdate.URL = model.URL;
                     quizToUpdate.QuestionNumber = model.QuestionNumber;
-                    //quizToUpdate.Results = model.Results;
+                    quizToUpdate.Results = results;
                     db.SaveChanges();
                     return true;
                 }

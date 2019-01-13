@@ -116,6 +116,7 @@
     <Compile Include="Entities\Level.cs" />
     <Compile Include="Enum\AnswerStateEnum.cs" />
     <Compile Include="Enum\QuestionTypeEnum.cs" />
+    <Compile Include="ExtensionMethods\ListExtensions.cs" />
     <Compile Include="Identity\IdentityConfig.cs" />
     <Compile Include="Migrations\201812191128445_initDataBase.cs" />
     <Compile Include="Migrations\201812191128445_initDataBase.Designer.cs">

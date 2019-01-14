@@ -7,6 +7,7 @@ using QuizzGenerator.Domain.Entities;
 using QuizzGenerator.Services.Interfaces;
 using QuizzGenerator.Domain.ViewModels;
 using QuizzGenerator.Domain.ViewModels.Mapping;
+using QuizzGenerator.Domain.ExtensionMethods;
 
 namespace QuizzGenerator.Services.Services
 {
@@ -134,18 +135,32 @@ namespace QuizzGenerator.Services.Services
             List<Question> questions = new List<Question>();
             try
             {
-
-
                 using (QuizContext db = new QuizContext())
                 {
                     Quiz quiz = db.Quizzes.Find(quizId);
-                    questions = db.Questions.Where(x => x.LanguageId == languageId).Where(x => x.LevelId == levelId).Take(quizQuestionCount).ToList();
-                    quiz.Results.ToList().AddRange(questions.Select(q => new Result() {
-                        QuestionId = q.QuestionId,
-                        AnsweState = Domain.Enum.AnswerStateEnum.None,
-                        QuizId = quizId,
-                    }));
-                    //a finir
+                    if(quiz != null)
+                    {
+                        //Get ratios from Level
+                        Level level = quiz.Level;
+                        List<Ratio> ratios = level.Ratios.ToList();
+
+                        List<Question> temp = db.Questions.Where(q => q.LanguageId == languageId).ToList();
+
+                        //foreach ratioLevel take question by ratio
+                        foreach (Ratio r in ratios)
+                        {
+                            int questionNumber = Convert.ToInt32(quizQuestionCount * r.Percent);                       
+                            questions = temp.Where(q => q.LevelId == r.LevelRatioId).Take(questionNumber).ToList();
+                            //shuffle list with extension methods
+                            questions.Shuffle();
+                            quiz.Results.ToList().AddRange(questions.Select(q => new Result() {
+                                QuestionId = q.QuestionId,
+                                AnsweState = Domain.Enum.AnswerStateEnum.None,
+                                QuizId = quizId
+                            }));
+                            questions.Clear();
+                        }
+                    }
                 }
             }
             catch (Exception ex)
@@ -163,7 +178,16 @@ namespace QuizzGenerator.Services.Services
         /// <returns></returns>
         public Quiz GetQuizQuestions(int id)
         {
-            return new Quiz();
+            try
+            {
+                using (QuizContext db = new QuizContext())
+                {
+                    return db.Quizzes.Where(q => q.QuizId == id).SingleOrDefault();
+                }
+            }catch(Exception ex)
+            {
+                return new Quiz();
+            }
         }
 
         /// <summary>

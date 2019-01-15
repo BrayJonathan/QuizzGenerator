@@ -41,6 +41,8 @@ namespace QuizGenerator.Web
             // Ceci est similaire à l'option RememberMe quand vous vous connectez.
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
+
+            //Allow to initialize ApplicationUserManager and ApplicationSignInManager
             app.CreatePerOwinContext(QuizContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);

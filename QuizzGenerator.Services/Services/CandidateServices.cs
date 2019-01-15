@@ -10,7 +10,7 @@ using QuizzGenerator.Domain.ViewModels.Mapping;
 
 namespace QuizzGenerator.Services.Services
 {
-    class CandidateServices
+    public class CandidateServices
     {
         /// <summary>
         /// Add new Candidate

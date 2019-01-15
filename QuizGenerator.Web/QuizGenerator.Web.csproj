@@ -245,6 +245,8 @@
     <Content Include="Views\Question\Index.cshtml" />
     <Content Include="Views\Candidate\Index.cshtml" />
     <Content Include="Views\Quiz\Index.cshtml" />
+    <Content Include="Views\Quiz\Create.cshtml" />
+    <Content Include="Views\Quiz\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

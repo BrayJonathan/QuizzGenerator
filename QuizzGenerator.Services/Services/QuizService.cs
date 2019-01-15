@@ -14,7 +14,7 @@ namespace QuizzGenerator.Services.Services
     public class QuizService : IQuizService
     {
         /// <summary>
-        /// Création d'un quiz avec les information du candidat
+        /// Création d'un quiz avec les informations du candidat
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -25,16 +25,14 @@ namespace QuizzGenerator.Services.Services
                 using (QuizContext db = new QuizContext())
                 {
                     db.Quizzes.Add(quiz.MapToQuiz());
+                    InitQuizQuestionList(quiz.QuizId, quiz.LanguageId, quiz.LevelId, quiz.QuestionNumber);
                     db.SaveChanges();
-
-                    //init quiz()
                 }
             }
             catch (Exception ex)
             {
                 return -1;
             }
-
             return 0;
         }
 
@@ -138,27 +136,43 @@ namespace QuizzGenerator.Services.Services
                 using (QuizContext db = new QuizContext())
                 {
                     Quiz quiz = db.Quizzes.Find(quizId);
-                    if(quiz != null)
+                    if (quiz != null)
                     {
                         //Get ratios from Level
                         Level level = quiz.Level;
-                        List<Ratio> ratios = level.Ratios.ToList();
+
 
                         List<Question> temp = db.Questions.Where(q => q.LanguageId == languageId).ToList();
 
+                        //shuffle list with extension methods
+                        temp.Shuffle();
                         //foreach ratioLevel take question by ratio
-                        foreach (Ratio r in ratios)
+
+                        foreach (Ratio r in level.Ratios.ToList())
                         {
-                            int questionNumber = Convert.ToInt32(quizQuestionCount * r.Percent);                       
+                            int questionNumber = (int)Math.Ceiling(quizQuestionCount * r.Percent);
                             questions = temp.Where(q => q.LevelId == r.LevelRatioId).Take(questionNumber).ToList();
-                            //shuffle list with extension methods
-                            questions.Shuffle();
-                            quiz.Results.ToList().AddRange(questions.Select(q => new Result() {
+                            quiz.Results.ToList().AddRange(questions.Select(q => new Result()
+                            {
                                 QuestionId = q.QuestionId,
                                 AnsweState = Domain.Enum.AnswerStateEnum.None,
                                 QuizId = quizId
                             }));
                             questions.Clear();
+                        }
+
+                        if (quiz.Results.Count > quizQuestionCount)
+                        {
+                            int delta = quiz.Results.Count - quizQuestionCount;
+
+                            for (int i = 0; i < delta; i++)
+                            {
+                                var resultToDelete = quiz.Results.Where(r => r.Question.LevelId == levelId).FirstOrDefault();
+                                if (resultToDelete != null)
+                                {
+                                    quiz.Results.Remove(resultToDelete);
+                                }
+                            }
                         }
                     }
                 }
@@ -167,7 +181,7 @@ namespace QuizzGenerator.Services.Services
             {
 
             }
-            
+
 
         }
 
@@ -184,7 +198,8 @@ namespace QuizzGenerator.Services.Services
                 {
                     return db.Quizzes.Where(q => q.QuizId == id).SingleOrDefault();
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 return new Quiz();
             }

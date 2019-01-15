@@ -12,14 +12,14 @@ namespace QuizzGenerator.Domain.ExtensionMethods
 
         public static void Shuffle<T>(this IList<T> list)
         {
-            int n = list.Count;
-            while (n > 1)
+            List<T> rdmliste = list.ToList();
+            list.Clear();
+            for (int i = 0; i < rdmliste.Count; i++)
             {
-                n--;
-                int k = rdn.Next(n + 1);
-                T value = list[k];
-                list[k] = list[n];
-                list[n] = value;
+                var random = new Random();
+                int index = random.Next(rdmliste.Count);
+                list.Add(rdmliste[index]);
+                rdmliste.RemoveAt(index);
             }
         }
     }

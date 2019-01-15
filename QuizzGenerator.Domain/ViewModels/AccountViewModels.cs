@@ -65,6 +65,18 @@ namespace QuizGenerator.Domain.ViewModels
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "Nom")]
+        public string LastName { get; set; }
+
+        [Required]
+        [Display(Name = "Prénom")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Date de Naissance")]
+        public string BirthDate { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Courrier électronique")]
         public string Email { get; set; }

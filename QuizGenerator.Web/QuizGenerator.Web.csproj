@@ -169,6 +169,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CandidateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LanguageController.cs" />
+    <Compile Include="Controllers\LevelController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Controllers\QuizController.cs" />
@@ -245,6 +247,17 @@
     <Content Include="Views\Question\Index.cshtml" />
     <Content Include="Views\Candidate\Index.cshtml" />
     <Content Include="Views\Quiz\Index.cshtml" />
+    <Content Include="Views\Language\Create.cshtml" />
+    <Content Include="Views\Language\Delete.cshtml" />
+    <Content Include="Views\Language\Details.cshtml" />
+    <Content Include="Views\Language\Edit.cshtml" />
+    <Content Include="Views\Language\Index.cshtml" />
+    <Content Include="Views\Level\Create.cshtml" />
+    <Content Include="Views\Level\Delete.cshtml" />
+    <Content Include="Views\Level\Details.cshtml" />
+    <Content Include="Views\Level\Edit.cshtml" />
+    <Content Include="Views\Level\Index.cshtml" />
+    <Content Include="Views\Candidate\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -23,13 +23,16 @@ textarea {
     max-width: 280px;
 }
 
-.QuestionOptionStyle{
-    width:100%;
-    background-color:lightgray;
+.QuestionOptionStyle {
+    width: 50%;
+    background-color: lightblue;
     border: 1px solid gray;
-    border-radius:2%;
-    padding:2%;
+    border-radius: 5%;
+    padding:3%;
+    visibility:hidden;
+    display:none;
+    margin-top:2%;
 }
-.QuestionOptionStyle input[type="text"]{
 
-}
+    .QuestionOptionStyle input[type="text"] {
+    }

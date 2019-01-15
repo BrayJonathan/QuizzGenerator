@@ -7,10 +7,10 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Question</h4>
         <hr />
@@ -18,7 +18,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.QuestionLabel, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.QuestionLabel, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.QuestionLabel, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.QuestionLabel, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.QuestionLabel, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -54,15 +55,41 @@
                 @Html.ValidationMessageFor(model => model.LanguageId, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div>
-            <div class="QuestionOptionStyle">
-                @Html.Partial("~/Views/QuestionOptions/_Create.cshtml")
-            </div>
-            <input type="button" id="AddQuestionOption" value="+" />
-        </div>
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="button" id="AddQuestionOption" class="btn btn-default" value="Ajouter une question" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div id="QuestionOptions">
+                <div class="QuestionOptionStyle" id="QuestionOption_">
+                    <div class="row">
+                        <span class="control-label question">Question :</span>
+                    </div>
+                    <div class="row">
+                        <textarea id="label_" class="form-control" placeholder="Votre réponse..."></textarea>
+                    </div>
+                    <div class="row">
+                        <label for"label" class="control-label col-md-2">Correct : </label>
+                        <input type="checkbox" id="isCorrect_" value="Vrai" />
+                    </div>
+                    <div class="row">
+                        <input type="button" id="delete_" class="btn btn-default" value="Supprimer" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*<div>
+                <div class="QuestionOptionStyle">
+                    @Html.Partial("~/Views/QuestionOptions/_Create.cshtml")
+                </div>
+                <input type="button" id="AddQuestionOption" value="+" />
+            </div>*@
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" id="validate" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>

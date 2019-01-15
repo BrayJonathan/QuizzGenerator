@@ -81,7 +81,7 @@ namespace QuizzGenerator.Services.Services
         {
             using (QuizContext db = new QuizContext())
             {
-                var candidate = db.Candidates.Where(c => c.CandidateID == candidateVM.CandidateID).SingleOrDefault();
+                var candidate = db.Candidates.FirstOrDefault(c => c.CandidateID == candidateVM.CandidateID);
                 candidate.LastName = candidateVM.LastName;
                 candidate.FirstName = candidateVM.FirstName;
                 candidate.PhoneNumber = candidateVM.PhoneNumber;

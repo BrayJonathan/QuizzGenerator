@@ -22,3 +22,14 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.QuestionOptionStyle{
+    width:100%;
+    background-color:lightgray;
+    border: 1px solid gray;
+    border-radius:2%;
+    padding:2%;
+}
+.QuestionOptionStyle input[type="text"]{
+
+}

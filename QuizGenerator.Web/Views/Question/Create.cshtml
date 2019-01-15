@@ -54,13 +54,19 @@
                 @Html.ValidationMessageFor(model => model.LanguageId, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <div>
+            <div class="QuestionOptionStyle">
+                @Html.Partial("~/Views/QuestionOptions/_Create.cshtml")
+            </div>
+            <input type="button" id="AddQuestionOption" value="+" />
+        </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>
+    <br />
 }
 
 <div>
@@ -68,5 +74,5 @@
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryval", "~/bundles/myscript")
 }

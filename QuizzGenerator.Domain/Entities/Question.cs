@@ -35,13 +35,18 @@ namespace QuizzGenerator.Domain.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int QuestionId { get => _QuestionId; set => _QuestionId = value; }
+        [Display(Name ="Label")]
         public string QuestionLabel { get => _QuestionLabel; set => _QuestionLabel = value; }
+        [Display(Name = "Type")]
         public QuestionTypeEnum QuestionType { get => _QuestionType; set => _QuestionType = value; }
         [ForeignKey("EmployeeCreator"),Column("EmployeeId")]
+        [Display(Name = "Employee")]
         public int EmployeeId { get => _EmployeeId; set => _EmployeeId = value; }
         [ForeignKey("Level"), Column("LevelId")]
+        [Display(Name = "Level")]
         public int LevelId { get => _LevelId; set => _LevelId = value; }
         [ForeignKey("Language"), Column("LanguageId")]
+        [Display(Name = "Language")]
         public int LanguageId { get => _LanguageId; set => _LanguageId = value; }
         #endregion
     }

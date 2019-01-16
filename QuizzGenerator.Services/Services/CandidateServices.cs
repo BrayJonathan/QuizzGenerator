@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,54 +17,38 @@ namespace QuizzGenerator.Services.Services
         /// Add new Candidate
         /// </summary>
         /// <param name="model"></param>
-        /// <returns></returns>
-        public int AddNewCandidate(CandidateViewModels candidateViewModel)
+        public void AddNewCandidate(CandidateViewModels candidateViewModel)
         {
-            try
+            using (QuizContext db = new QuizContext())
             {
-                using (QuizContext db = new QuizContext())
-                {
-                    var candidate = candidateViewModel.MapToCandidate();// à faire: remplacer par la methode mapping de amine
-                    db.Candidates.Add(candidate);
-                    db.SaveChanges();
-                }
+                var candidate = candidateViewModel.MapToCandidate();
+                db.Candidates.Add(candidate);
+                db.SaveChanges();
             }
-            catch (Exception ex)
-            {
-                return -1;
-            }
-
-            return 0;
-
         }
 
         /// <summary>
         /// return all candidate liste
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Listes des candidates</returns>
         public List<CandidateViewModels> GetCandidates()
         {
-            List<CandidateViewModels> candidates = new List<CandidateViewModels>(); 
-            
+            List<CandidateViewModels> candidates = new List<CandidateViewModels>();
             try
             {
                 using (QuizContext db = new QuizContext())
                 {
-                    foreach(Candidate c in db.Candidates)
+                    foreach (Candidate c in db.Candidates)
                     {
                         candidates.Add(c.MapToCandidateViewModels());
                     }
-                   
                 }
             }
             catch (Exception ex)
             {
-                
+
             }
-
             return candidates;
-
-            //return new List<Candidate>();
         }
 
         /// <summary>
@@ -73,22 +58,38 @@ namespace QuizzGenerator.Services.Services
         /// <returns></returns>
         public CandidateViewModels GetCandidateById(int id)
         {
-            CandidateViewModels candidate = new CandidateViewModels(); 
+            CandidateViewModels candidate = new CandidateViewModels();
             try
             {
                 using (QuizContext db = new QuizContext())
                 {
-                   candidate = db.Candidates.Find(id).MapToCandidateViewModels();
-
+                    candidate = db.Candidates.Find(id).MapToCandidateViewModels();
                 }
             }
             catch (Exception ex)
             {
-                
+
             }
-
             return candidate;
+        }
 
+        /// <summary>
+        /// Edit Candidate
+        /// </summary>
+        /// <param name="candidateViewModel"></param>
+        public void EditCandidate(CandidateViewModels candidateVM)
+        {
+            using (QuizContext db = new QuizContext())
+            {
+                var candidate = db.Candidates.FirstOrDefault(c => c.CandidateID == candidateVM.CandidateID);
+                candidate.LastName = candidateVM.LastName;
+                candidate.FirstName = candidateVM.FirstName;
+                candidate.PhoneNumber = candidateVM.PhoneNumber;
+                candidate.Email = candidateVM.Email;
+                candidate.EmployeeId = candidateVM.EmployeeId;
+                db.Entry(candidate).State = EntityState.Modified;
+                db.SaveChanges();
+            }
         }
     }
 }

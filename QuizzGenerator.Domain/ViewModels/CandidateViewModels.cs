@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace QuizzGenerator.Domain.ViewModels
 {
+
     public class CandidateViewModels
     {
         #region properties
@@ -18,11 +19,9 @@ namespace QuizzGenerator.Domain.ViewModels
         private string _PhoneNumber;
         private string _Email;
         private int _EmployeeId;
-
         #endregion
 
         #region accessors
-        
         public int CandidateID { get => _CandidateID; set => _CandidateID = value; }
         [Required, StringLength(30), DisplayName("Nom :")]
         public string LastName { get => _LastName; set => _LastName = value; }

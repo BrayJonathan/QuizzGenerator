@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizGenerator.Web", "QuizGe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizGenerator.Web.Tests", "QuizGenerator.Web.Tests\QuizGenerator.Web.Tests.csproj", "{3E496DD0-668A-489E-BE97-784D4AF68210}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizGenerator.WebAPI", "QuizGenerator.WebAPI\QuizGenerator.WebAPI.csproj", "{C361583A-42CF-433B-8C5B-9394A8D4A315}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{3E496DD0-668A-489E-BE97-784D4AF68210}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E496DD0-668A-489E-BE97-784D4AF68210}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E496DD0-668A-489E-BE97-784D4AF68210}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C361583A-42CF-433B-8C5B-9394A8D4A315}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C361583A-42CF-433B-8C5B-9394A8D4A315}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C361583A-42CF-433B-8C5B-9394A8D4A315}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C361583A-42CF-433B-8C5B-9394A8D4A315}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
